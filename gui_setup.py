@@ -12,14 +12,14 @@ class AutomationGUISetup():
         self.driver = webdriver.Firefox()
         self.workdata = load_workbook(filename = self.DataFile)
         self.Product_Data_Key = {
-                'pagename' : 'Centurylink_C3000A_pages' ,
-                'pageaddr' : 'Centurylink_C3000A_url' ,
+                'pagename' : 'C3000A_pages' ,
+                'pageaddr' : 'C3000A_url' ,
                 'elementname' : 'element_name' ,
                 'elementloc' : 'element_location' ,
                 'elementval' : 'element_value',
                 }
         self.Product_Version = {
-                'newverison' : '~/Taskspace/Firmwere/Centrylink_C3000A/*00g-*/*cfe*',
+                'newverison' : '~/Taskspace/Firmwere/C3000A/*xxxxxxx-*/*bootloader*',
                 'oldversion' : '',
         }
 
@@ -104,18 +104,18 @@ class AutomationGUISetup():
 
     def router_login(self):
         driver = self.driver
-        home = self.gui_detail('pages','main_page',)
+        home = self.gui_detail('pages','xxxxxxx',)
         element_find = self.element_find
         driver.get(home)
         try:
-            logoutid = self.gui_detail('elements','mainpage_logout')
+            logoutid = self.gui_detail('elements','xxxxxxx')
             element_find(logoutid).click()
         except:
-            usernameid = self.gui_detail('elements','main_Username')
-            user = self.gui_detail('elements','main_Username','user')
-            passwordid = self.gui_detail('elements','main_Password')
-            password = self.gui_detail('elements','main_Password','user')
-            applyid = self.gui_detail('elements','main_Apply')
+            usernameid = self.gui_detail('elements','xxxxxxx')
+            user = self.gui_detail('elements','xxxxxxx','user')
+            passwordid = self.gui_detail('elements','xxxxxxx')
+            password = self.gui_detail('elements','xxxxxxx','user')
+            applyid = self.gui_detail('elements','xxxxxxx')
             element_find(usernameid).clear()
             element_find(passwordid).clear()
             element_find(usernameid).send_keys(user)
@@ -143,8 +143,8 @@ class AutomationGUISetup():
         self.router_page_go('utilities_UpgradeFirmware')
         product_version = self.Product_Version
         element_find = self.element_find
-        browserid = self.gui_detail('elements','uupgrade_Browse')
-        upgradeid = self.gui_detail('elements','uupgrade_Upgrade')
+        browserid = self.gui_detail('elements','xxxxxxx')
+        upgradeid = self.gui_detail('elements','xxxxxxx')
         element_find(browserid).send_keys(product_version['newverison'])
         element_find(upgradeid).click()
         time.sleep(150)
@@ -153,7 +153,7 @@ class AutomationGUISetup():
     def router_reboot(self):
         self.router_login()
         self.router_page_go('utilities_home')
-        rebootid = self.gui_detail('elements','ureboot_button')
+        rebootid = self.gui_detail('elements','xxxxxxx')
         self.element_find(rebootid).click()
         time.sleep(150)
 
